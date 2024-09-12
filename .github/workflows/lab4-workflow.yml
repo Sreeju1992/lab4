@@ -2,7 +2,10 @@ name: Publish Package to GitHub NPM Registry
 
 on: 
   release: 
-    types: published   
+    types: published
+
+permissions:
+  packages: write
     
 jobs:
     npm-package:
@@ -20,4 +23,10 @@ jobs:
         - name: Install Dependencies
           run: npm install
 
-          
+        - name: Publish Artifacts to the registry
+          run: npm publish
+          env:
+            NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+
+
