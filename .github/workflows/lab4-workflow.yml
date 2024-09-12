@@ -4,13 +4,13 @@ on:
   release: 
     types: published
 
-permissions:
-  packages: write
-  contents: write
     
-jobs:
+ jobs:
     npm-package:
       runs-on: ubuntu-latest
+      permissions: 
+        packages: write
+        contents: read
       steps:
         - name: Checkout Repository
           uses: actions/checkout@v4
